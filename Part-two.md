@@ -16,6 +16,29 @@ To provide users with the ability to explore Pokémon evolution chains, a scalab
    - **User Service (if required)**: Manages user data, preferences, and potentially saved evolution chains.
    - **API Gateway**: To streamline the multiple microservice calls, an API gateway can be employed. It acts as a single entry point and can manage request routing, aggregation, and rate limiting.
 
+### Module Strucutre:
+   - **Single Action ( add, edit, update, delete, view )  
+   - **Batch Action  ( add, edit, update, delete)
+   - **Search ( simple, complex )
+   - **Error handling    
+   - **Permissions ( add, edit, update, delete, view, own, and any )  - role-based 
+   - **Settings  ( module on and off, others) 
+   - **Filed API ( ability to extend and arrange form fields) 
+   - **Report 
+   - **list 
+   - **Search 
+   - **Filters 
+   - **Pagination 
+   - **Trash & Recovery  ( no entry should get deleted directly ) 
+   - **Install/uninstall 
+   - **Upgrade & Downgrade 
+   - **API routes (entities, actors, actions, exceptions, security)
+   - **Data(import/export)
+   - **Hooks (for third-party developers to extend all the functions)
+   - **Exceptions 
+   - **Modes ( live, test )  
+
+
 ### 3. Database:
    If user data management or caching is needed, a NoSQL database like MongoDB or a relational one like PostgreSQL, depending on the structure of data, can be incorporated.
 
