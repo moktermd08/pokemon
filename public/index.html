@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Evolution Chain Finder-Test</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/branding/favicon.png">
+    
+    <!-- Basic SEO Meta Tags -->
+    <meta name="description" content="Find the evolution chain of your favorite Pokémon. Simply input a Pokémon's name to discover its evolutionary lineage.">
+    <meta name="keywords" content="Pokémon, Evolution, Chain, Pokémon Evolution, Lineage">
+    
+    <!-- Open Graph Tags (for social media sharing) -->
+    <meta property="og:title" content="Pokemon Evolution Chain Finder">
+    <meta property="og:description" content="Find the evolution chain of your favorite Pokémon.">
+    <meta property="og:image" content="assets/images/branding/social.png"> <!-- Provide a link to an image that represents your website, typically a logo or banner. -->
+    <meta property="og:url" content="YOUR_WEBSITE_URL"> <!-- Replace with your website's URL -->
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pokemon Evolution Chain Finder">
+    <meta name="twitter:description" content="Find the evolution chain of your favorite Pokémon.">
+    <meta name="twitter:image" content="assets/images/branding/social.png"> <!-- Provide a link to an image that represents your website, typically a logo or banner. -->
+
+    <!-- css styles --> 
+    <link href="assets/styles/output.css" rel="stylesheet">
+
+</head>
+<body class="pokamonChallange mainWrapper">
+    <!-- Main Title -->
+    <h1 class="mainHeadline">Pokemon Evolution Chain Finder</h1>
+    <!-- Input field for user to enter the Pokémon name -->
+    <label for="pokemonName">Enter Pokemon Name:</label>
+    <input type="text" id="pokemonName" class="searhInput">
+    <!-- Button that triggers the fetchEvolution function when clicked -->
+    <button onclick="fetchEvolution()">Get Evolution Chain</button>
+
+    <!-- Display area for the results of the fetch operation -->
+    <h2>Result:</h2>
+    <pre id="result" class="searchResult"></pre>
+
+    <!-- JavaScript section to fetch the evolution chain data based on user input -->
+    <script>
+        // Function to fetch Pokémon evolution chain data and display the results
+        const fetchEvolution = async () => {
+            // Get the Pokémon name entered by the user
+            const name = document.getElementById('pokemonName').value;
+            const resultElement = document.getElementById('result');
+            try {
+                // Send a request to the server to fetch the evolution chain data
+                const response = await fetch(`/evolution?name=${name}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                // Display the fetched data in the 'result' element
+                resultElement.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                // Display an error message if fetching fails
+                resultElement.textContent = 'Error fetching evolution chain';
+            }
+        }
+    </script>
+</body>
+</html>
